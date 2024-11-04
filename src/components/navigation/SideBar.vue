@@ -29,7 +29,7 @@ const handleClick = () => {
 <template>
   <div
   @click="handleClick"
-    :class="!props.toggle ?` max-w-[320px] w-full sm:fixed 2xl:static sm:translate-x-[-150%] 2xl:transform-none transition-all duration-1000 2xl:block h-screen bg-[#242290] pl-5 pt-[40px]` :'max-w-[320px] w-full sm:fixed 2xl:static sm:translate-x-[0%] 2xl:transform-none   2xl:block h-screen bg-[#242290] pl-5 pt-[40px] transition-all duration-1000'"
+    :class="!props.toggle ?` max-w-[320px] w-full sm:fixed 2xl:static sm:translate-x-[-150%] 2xl:transform-none transition-all duration-1000 2xl:block h-screen bg-[#242290] pl-5 pt-[40px] sm:z-20` :'max-w-[320px] w-full sm:fixed 2xl:static sm:translate-x-[0%] 2xl:transform-none   2xl:block h-screen bg-[#242290] pl-5 pt-[40px] transition-all duration-1000 sm:z-20'"
   >
     <div class="flex mb-[40px] gap-5">
       <component :is="jt"/> <span class="font-[700] text-[32px] leading-[48px] text-white">JODNA TECH</span>
