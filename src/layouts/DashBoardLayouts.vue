@@ -13,7 +13,7 @@ const toggle = ref(false)
   <div class="flex w-full min-h-screen bg-[#F3F4FF] relative">
     <SideBar :toggle="toggle" @update:toggle="toggle = $event"/>
 
-    <div class="w-full sm:flex sm:flex-col sm:gap-5 ">
+    <div class="w-full sm:flex sm:flex-col sm:gap-5 h-screen overflow-y-auto">
       <TopBar :toggle="toggle" @update:toggle="toggle = $event"/>
       <RouterView />
     </div>
