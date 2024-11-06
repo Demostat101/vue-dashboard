@@ -1,90 +1,115 @@
 <template>
   <div class="bg-white w-full flex flex-col gap-5 p-5 rounded-lg">
-    <div class="font-[700] text-[24px] leading-[36px] text-[#303972] text-nowrap">Unpaid Student Intuition</div>
+    <div
+      class="font-[700] text-[24px] leading-[36px] text-[#303972] text-nowrap"
+    >
+      Unpaid Student Intuition
+    </div>
     <!-- Custom Previous and Next buttons -->
 
-
-    <div class="overflow-x-auto max-w-full hide-scrollbar" >
-      <table className=" table-auto  w-full  place-items-center text-left text-nowrap" >
-
-<tbody >
-
-    <tr v-for="student in slicedData" :key="student.id" className="bg-white">
-      <td className="pr-[30px] py-4 flex items-center gap-2">
-        <div class="bg-[#C1BBEB] w-[48px] h-[48px] rounded-full"></div>
-        <span class="font-[600] text-[18px] leading-[27px] text-[#303972]">{{ student.name }}</span>
-      </td>
-      <td class="font-[600] text-[18px] leading-[27px] text-[#303972] text-left px-[30px]">ID {{ student.id }}</td>
-      <td
-        class="flex gap-2 px-[30px]"
+    <div class="overflow-x-auto max-w-full hide-scrollbar">
+      <table
+        className=" table-auto  w-full  place-items-center text-left text-nowrap"
       >
-      <div class="bg-[#FB7D5B] w-[48px] h-[48px] rounded-full flex justify-center place-items-center">
-        <component :is="Student"/>
+        <tbody>
+          <tr
+            v-for="student in slicedData"
+            :key="student.id"
+            className="bg-white"
+          >
+            <td className="pr-[30px] py-4 flex items-center gap-2">
+              <div class="bg-[#C1BBEB] w-[48px] h-[48px] rounded-full"></div>
+              <span
+                class="font-[600] text-[18px] leading-[27px] text-[#303972]"
+                >{{ student.name }}</span
+              >
+            </td>
+            <td
+              class="font-[600] text-[18px] leading-[27px] text-[#303972] text-left px-[30px]"
+            >
+              ID {{ student.id }}
+            </td>
+            <td class="flex gap-2 px-[30px]">
+              <div
+                class="bg-[#FB7D5B] w-[48px] h-[48px] rounded-full flex justify-center place-items-center"
+              >
+                <component :is="Student" />
+              </div>
+              <span class="flex flex-col">
+                <span
+                  class="font-[400] text-[14px] leading-[21px] text-[#A098AE]"
+                  >class</span
+                >
+                <span
+                  class="font-[600] text-[18px] leading-[27px] text-[#363B64]"
+                  >{{ student.class }}</span
+                >
+              </span>
+            </td>
+
+            <td class="px-[30px]">
+              <div class="font-[600] text-[18px] leading-[27px] text-[#363B64]">
+                $ {{ student.amount }}
+              </div>
+            </td>
+            <td class="px-[30px]">
+              <div class="flex gap-3">
+                <component :is="student.download" />
+                <component :is="student.more" />
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div
+      class="overflow-x-auto max-w-full hide-scrollbar flex justify-between place-items-center gap-5"
+    >
+      <div
+        class="font-[400] text-[14px] leading-[21px] text-[#363B64] text-nowrap"
+      >
+        Showing {{ pageRange }}
       </div>
-      <span class="flex flex-col">
-        <span class="font-[400] text-[14px] leading-[21px] text-[#A098AE]">class</span>
-        <span class="font-[600] text-[18px] leading-[27px] text-[#363B64]">{{ student.class }}</span>
-      </span>
-      </td>
+      <div
+        class="pagination-controls flex place-items-center gap-5 min-w-[300px]"
+      >
+        <component
+          @click="goToPreviousPage"
+          :disabled="currentPageIndex <= 1"
+          outlined
+          :is="preBtn"
+          class="text-[#A098AE]"
+        />
 
-      <td class="px-[30px]" >
-        <div class="font-[600] text-[18px] leading-[27px] text-[#363B64]">
-      $ {{ student.amount }}
-    </div>
-      </td>
-      <td class="px-[30px]">
-        <div class="flex gap-3">
-      <component  :is="student.download"/>
-      <component :is="student.more"/>
-    </div>
-      </td>
+        <!-- Vuetify pagination -->
+        <v-pagination
+          v-model="currentPageIndex"
+          :length="totalPages"
+          :total-visible="5"
+        />
 
-    </tr>
-
-</tbody>
-</table>
-    </div>
-
-
-
-    <div class="pagination-controls flex place-items-center gap-5">
-      <component
-        @click="goToPreviousPage"
-        :disabled="currentPageIndex <= 1"
-        outlined
-        :is="preBtn"
-        class="text-[#A098AE]"
-      />
-
-      <!-- Vuetify pagination -->
-      <v-pagination
-        v-model="currentPageIndex"
-        :length="totalPages"
-        :total-visible="5"
-      />
-
-      <component
-        @click="goToNextPage"
-        :disabled="currentPageIndex >= totalPages"
-        class="text-[#A098AE]"
-        :is="nxtBtn"
-        outlined
-        aria-disabled="true"
-
-      />
+        <component
+          @click="goToNextPage"
+          :disabled="currentPageIndex >= totalPages"
+          class="text-[#A098AE]"
+          :is="nxtBtn"
+          outlined
+          aria-disabled="true"
+        />
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { VPagination} from 'vuetify/components'
+import { VPagination } from 'vuetify/components'
 import preBtn from '../../assets/prev.svg'
 import nxtBtn from '../../assets/next.svg'
 import printBtn from '../../assets/print.svg'
 import moreBtn from '../../assets/dots.svg'
 import Student from '../../assets/single-student.svg'
-
 
 const studentsData = [
   {
@@ -93,7 +118,7 @@ const studentsData = [
     class: 'VII A',
     download: printBtn,
     more: moreBtn,
-    amount: 50000
+    amount: 50000,
   },
   {
     id: 1233555,
@@ -101,7 +126,7 @@ const studentsData = [
     class: 'VII B',
     download: printBtn,
     more: moreBtn,
-    amount: 45000
+    amount: 45000,
   },
   {
     id: 1233556,
@@ -109,7 +134,7 @@ const studentsData = [
     class: 'VII C',
     download: printBtn,
     more: moreBtn,
-    amount: 38000
+    amount: 38000,
   },
   {
     id: 1233557,
@@ -117,7 +142,7 @@ const studentsData = [
     class: 'VII A',
     download: printBtn,
     more: moreBtn,
-    amount: 42000
+    amount: 42000,
   },
   {
     id: 1233558,
@@ -125,7 +150,7 @@ const studentsData = [
     class: 'VII B',
     download: printBtn,
     more: moreBtn,
-    amount: 51000
+    amount: 51000,
   },
   {
     id: 1233559,
@@ -133,7 +158,7 @@ const studentsData = [
     class: 'VII C',
     download: printBtn,
     more: moreBtn,
-    amount: 47000
+    amount: 47000,
   },
   {
     id: 1233560,
@@ -141,7 +166,7 @@ const studentsData = [
     class: 'VIII A',
     download: printBtn,
     more: moreBtn,
-    amount: 53000
+    amount: 53000,
   },
   {
     id: 1233561,
@@ -149,7 +174,7 @@ const studentsData = [
     class: 'VIII B',
     download: printBtn,
     more: moreBtn,
-    amount: 49000
+    amount: 49000,
   },
   {
     id: 1233562,
@@ -157,7 +182,7 @@ const studentsData = [
     class: 'VIII C',
     download: printBtn,
     more: moreBtn,
-    amount: 46000
+    amount: 46000,
   },
   {
     id: 1233563,
@@ -165,7 +190,7 @@ const studentsData = [
     class: 'VIII A',
     download: printBtn,
     more: moreBtn,
-    amount: 47000
+    amount: 47000,
   },
   {
     id: 1233564,
@@ -173,7 +198,7 @@ const studentsData = [
     class: 'VIII B',
     download: printBtn,
     more: moreBtn,
-    amount: 49000
+    amount: 49000,
   },
   {
     id: 1233565,
@@ -181,7 +206,7 @@ const studentsData = [
     class: 'VIII C',
     download: printBtn,
     more: moreBtn,
-    amount: 52000
+    amount: 52000,
   },
   {
     id: 1233566,
@@ -189,7 +214,7 @@ const studentsData = [
     class: 'IX A',
     download: printBtn,
     more: moreBtn,
-    amount: 54000
+    amount: 54000,
   },
   {
     id: 1233567,
@@ -197,7 +222,7 @@ const studentsData = [
     class: 'IX B',
     download: printBtn,
     more: moreBtn,
-    amount: 55000
+    amount: 55000,
   },
   {
     id: 1233568,
@@ -205,7 +230,7 @@ const studentsData = [
     class: 'IX C',
     download: printBtn,
     more: moreBtn,
-    amount: 48000
+    amount: 48000,
   },
   {
     id: 1233569,
@@ -213,7 +238,7 @@ const studentsData = [
     class: 'IX A',
     download: printBtn,
     more: moreBtn,
-    amount: 49000
+    amount: 49000,
   },
   {
     id: 1233570,
@@ -221,7 +246,7 @@ const studentsData = [
     class: 'IX B',
     download: printBtn,
     more: moreBtn,
-    amount: 51000
+    amount: 51000,
   },
   {
     id: 1233571,
@@ -229,7 +254,7 @@ const studentsData = [
     class: 'IX C',
     download: printBtn,
     more: moreBtn,
-    amount: 45000
+    amount: 45000,
   },
   {
     id: 1233572,
@@ -237,7 +262,7 @@ const studentsData = [
     class: 'X A',
     download: printBtn,
     more: moreBtn,
-    amount: 46000
+    amount: 46000,
   },
   {
     id: 1233573,
@@ -245,7 +270,7 @@ const studentsData = [
     class: 'X B',
     download: printBtn,
     more: moreBtn,
-    amount: 43000
+    amount: 43000,
   },
   {
     id: 1233574,
@@ -253,7 +278,7 @@ const studentsData = [
     class: 'X C',
     download: printBtn,
     more: moreBtn,
-    amount: 52000
+    amount: 52000,
   },
   {
     id: 1233575,
@@ -261,7 +286,7 @@ const studentsData = [
     class: 'X A',
     download: printBtn,
     more: moreBtn,
-    amount: 54000
+    amount: 54000,
   },
   {
     id: 1233576,
@@ -269,7 +294,7 @@ const studentsData = [
     class: 'X B',
     download: printBtn,
     more: moreBtn,
-    amount: 55000
+    amount: 55000,
   },
   {
     id: 1233577,
@@ -277,7 +302,7 @@ const studentsData = [
     class: 'X C',
     download: printBtn,
     more: moreBtn,
-    amount: 47000
+    amount: 47000,
   },
   {
     id: 1233578,
@@ -285,7 +310,7 @@ const studentsData = [
     class: 'XI A',
     download: printBtn,
     more: moreBtn,
-    amount: 49000
+    amount: 49000,
   },
   {
     id: 1233579,
@@ -293,7 +318,7 @@ const studentsData = [
     class: 'XI B',
     download: printBtn,
     more: moreBtn,
-    amount: 50000
+    amount: 50000,
   },
   {
     id: 1233580,
@@ -301,7 +326,7 @@ const studentsData = [
     class: 'XI C',
     download: printBtn,
     more: moreBtn,
-    amount: 53000
+    amount: 53000,
   },
   {
     id: 1233581,
@@ -309,7 +334,7 @@ const studentsData = [
     class: 'XI A',
     download: printBtn,
     more: moreBtn,
-    amount: 47000
+    amount: 47000,
   },
   {
     id: 1233582,
@@ -317,7 +342,7 @@ const studentsData = [
     class: 'XI B',
     download: printBtn,
     more: moreBtn,
-    amount: 48000
+    amount: 48000,
   },
   {
     id: 1233583,
@@ -325,7 +350,7 @@ const studentsData = [
     class: 'XI C',
     download: printBtn,
     more: moreBtn,
-    amount: 50000
+    amount: 50000,
   },
   {
     id: 1233584,
@@ -333,7 +358,7 @@ const studentsData = [
     class: 'XII A',
     download: printBtn,
     more: moreBtn,
-    amount: 52000
+    amount: 52000,
   },
   {
     id: 1233585,
@@ -341,7 +366,7 @@ const studentsData = [
     class: 'XII B',
     download: printBtn,
     more: moreBtn,
-    amount: 49000
+    amount: 49000,
   },
   {
     id: 1233586,
@@ -349,7 +374,7 @@ const studentsData = [
     class: 'XII C',
     download: printBtn,
     more: moreBtn,
-    amount: 53000
+    amount: 53000,
   },
   {
     id: 1233587,
@@ -357,7 +382,7 @@ const studentsData = [
     class: 'XII A',
     download: printBtn,
     more: moreBtn,
-    amount: 51000
+    amount: 51000,
   },
   {
     id: 1233588,
@@ -365,7 +390,7 @@ const studentsData = [
     class: 'XII B',
     download: printBtn,
     more: moreBtn,
-    amount: 48000
+    amount: 48000,
   },
   {
     id: 1233589,
@@ -373,11 +398,9 @@ const studentsData = [
     class: 'XII C',
     download: printBtn,
     more: moreBtn,
-    amount: 46000
-  }
-];
-
-
+    amount: 46000,
+  },
+]
 
 const initialRowLength = ref(5)
 const currentPageIndex = ref(1)
@@ -389,7 +412,16 @@ const totalPages = computed(() =>
 const slicedData = computed(() => {
   const start = (currentPageIndex.value - 1) * initialRowLength.value
   const end = start + initialRowLength.value
+
   return studentsData.slice(start, end)
+})
+const pageRange = computed(() => {
+  const start = (currentPageIndex.value - 1) * initialRowLength.value + 1
+  const end = Math.min(
+    currentPageIndex.value * initialRowLength.value,
+    studentsData.length,
+  )
+  return `${start}-${end} from ${studentsData.length}`
 })
 
 // Method to go to the previous page
@@ -433,14 +465,4 @@ const goToNextPage = () => {
 .v-pagination__item--is-active .v-btn:hover {
   background-color: #7167e0 !important;
 }
-
-.hide-scrollbar{
-  @apply overflow-auto;
-  scrollbar-width: none; /* Firefox */
-}
-
-.hide-scrollbar::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, and Opera */
-}
-
 </style>

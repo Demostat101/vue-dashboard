@@ -98,7 +98,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex flex-col w-full bg-white rounded-xl">
+  <div class="flex flex-col w-full bg-white rounded-xl relative">
     <div class="flex justify-between px-5 pt-5 flex-wrap">
       <span class="font-[700] text-[24px] leading-[36px] text-[#303972] text-nowrap">School Performance</span>
       <div class="flex gap-3">
@@ -118,9 +118,11 @@ onMounted(() => {
         </div>
       </div>
     </div>
-    <div class="w-full h-[400px]">
+    <div class="overflow-x-auto max-w-full hide-scrollbar">
+    <div class=" h-[400px] min-w-[600px]">
       <!-- Canvas element for the chart -->
       <canvas ref="chartRef" width="100%" height="100%"></canvas>
     </div>
+  </div>
   </div>
 </template>
