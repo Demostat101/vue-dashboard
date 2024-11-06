@@ -75,7 +75,7 @@ function getDayClass(day: CalendarDay) {
   // Check if the day is a Sunday (0 = Sunday)
   const isSunday = day.date.day() === 0;
 
-  let baseClasses = 'h-[40px] w-[40px] grid place-items-center justify-center rounded-full font-[400] text-[18px] leading-[27px] text-[#303972]';
+  let baseClasses = 'max-h-[50px] w-full h-full max-w-[50px] grid place-items-center justify-center rounded-full font-[400] text-[18px] leading-[27px] text-[#303972]';
 
   if (!isCurrentMonth) {
     baseClasses += ' text-gray-300'; // Non-current month days (faded text)

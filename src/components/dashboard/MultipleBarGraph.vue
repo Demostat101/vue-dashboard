@@ -1,25 +1,25 @@
 <template>
-  <div class="flex flex-col w-full bg-white rounded-xl">
-    <div class="flex justify-between px-5 pt-5 flex-wrap">
+  <div class="flex flex-col w-full bg-white rounded-xl min-h-[400px] px-5">
+    <div class="flex justify-between px-5 pt-5 sm:flex-wrap md:flex-nowrap">
       <span class="font-[700] text-[24px] leading-[36px] text-[#303972] text-nowrap">School Finance</span>
-      <div class="flex gap-3">
+      <div class="flex gap-3 ">
         <div>
           <span class="flex gap-1 place-items-center">
             <span class="w-3 h-3 rounded-full border-[4px] border-[#FCC43E]"></span>
-            <span class="font-[400] text-[14px] leading-[21px] text-[#A098AE]">This Week</span>
+            <span class="font-[400] text-[14px] leading-[21px] text-[#706c77] text-nowrap">This Week</span>
           </span>
           <span class="ml-4 font-[700] text-[18px] leading-[27px] text-[#303972]">1.245</span>
         </div>
         <div>
           <span class="flex gap-1 place-items-center">
             <span class="w-3 h-3 rounded-full border-[4px] border-[#FB7D5B]"></span>
-            <span class="font-[400] text-[14px] leading-[21px] text-[#A098AE]">Last week</span>
+            <span class="font-[400] text-[14px] leading-[21px] text-[#A098AE] text-nowrap">Last week</span>
           </span>
           <span class="ml-4 font-[700] text-[18px] leading-[27px] text-[#303972]">1.356</span>
         </div>
       </div>
     </div>
-    <div class="w-full max-h-[400px]">
+    <div class="w-full  min-h-[370px]">
       <!-- Canvas element for the chart -->
       <Bar :data="chartData" :options="chartOptions" />
     </div>
@@ -62,15 +62,21 @@ const chartOptions: ChartOptions = {
       display: false
     },
     tooltip: {
-      enabled: true,
+      enabled: false,
     }
   },
   scales: {
     x: {
       beginAtZero: true,
+      ticks: {
+        padding: 10 // Padding between the graph and x-axis labels
+      }
     },
     y: {
       beginAtZero: true,
+      ticks: {
+        padding: 10 // Padding between the graph and x-axis labels
+      }
     }
   }
 }

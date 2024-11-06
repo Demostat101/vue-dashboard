@@ -17,7 +17,9 @@ export default {
     screens: {
       "sm":"0px",
       '2xl': '1280px', // You can change 'lg' to whatever name you prefer
-      "md":"500px"
+      "md":"500px",
+      "2xl+220":"1500px"
+
     },
   },
   plugins: [],
