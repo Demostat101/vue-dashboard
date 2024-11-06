@@ -62,7 +62,7 @@ const chartOptions: ChartOptions = {
       display: false
     },
     tooltip: {
-      enabled: false,
+      enabled: true,
     }
   },
   scales: {

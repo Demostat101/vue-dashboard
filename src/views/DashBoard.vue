@@ -3,6 +3,7 @@ import CalenderGraph from '@/components/dashboard/CalenderGraph.vue';
 import DashboardCards from '@/components/dashboard/DashboardCards.vue';
 import DashboardHeader from '@/components/dashboard/DashboardHeader.vue';
 import LineChart from '@/components/dashboard/LineChart.vue';
+import PaginationPage from '@/components/dashboard/PaginationPage.vue';
 
 
 </script>
@@ -14,6 +15,7 @@ import LineChart from '@/components/dashboard/LineChart.vue';
     <DashboardCards/>
     <LineChart/>
     <CalenderGraph/>
+    <PaginationPage/>
   </div>
   <div class=" sm:w-full sm:px-5 2xl:w-[30%] border-2 h-screen">hjdfjddkdf</div>
  </div>
