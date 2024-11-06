@@ -21,11 +21,6 @@ const months = [
 
 const calendarDays = computed(() => generateDate(selectedMonth.value, today.value.year()));
 
-// const headerClass = computed(() => {
-//   return selectedDate.value.isSame(dayjs(), 'day')
-//     ? 'h-[40px] grid justify-center place-items-center text-[16px] text-black font-[600]'
-//     : 'h-[43.62px] text-black font-[600] text-[17.62px] grid justify-center place-items-center';
-// });
 
 function generateDate(month: number, year: number) {
   const firstDayOfMonth = dayjs().year(year).month(month).startOf('month');
@@ -80,21 +75,21 @@ function getDayClass(day: CalendarDay) {
   // Check if the day is a Sunday (0 = Sunday)
   const isSunday = day.date.day() === 0;
 
-  let baseClasses = 'h-[30px] w-[30px] grid place-items-center justify-center rounded-full';
+  let baseClasses = 'h-[40px] w-[40px] grid place-items-center justify-center rounded-full font-[400] text-[18px] leading-[27px] text-[#303972]';
 
   if (!isCurrentMonth) {
     baseClasses += ' text-gray-300'; // Non-current month days (faded text)
   } else if (isToday) {
-    baseClasses += ' bg-[#176B87] text-white'; // Today's date style (highlight today's date)
+    baseClasses += ' bg-[#F5F5F5] text-[#303972] rounded-none w-[100%] h-[100%]'; // Today's date style (highlight today's date)
   } else if (isSelected) {
     // Apply different colors for the selected event days
-    const colors = ['bg-red-500', 'bg-blue-500', 'bg-green-500'];
-    baseClasses += ` ${colors[selectedDays.value.findIndex(d => d.isSame(day.date, 'day'))] || 'bg-yellow-500'} text-white`; // Choose color based on the index
+    const colors = ['bg-[#FB7D5B]', 'bg-[#FCC43E]', 'bg-[#4D44B5]'];
+    baseClasses += ` ${colors[selectedDays.value.findIndex(d => d.isSame(day.date, 'day'))] || 'bg-yellow-500 '} text-white`; // Choose color based on the index
   } else if (isSunday && isCurrentMonth) {
     // Apply orange color to Sundays in the current month
-    baseClasses += ' bg-orange-500 text-white'; // Orange background for Sundays
+    baseClasses += ' text-[#FC9D84]'; // Orange background for Sundays
   } else {
-    baseClasses += ' cursor-pointer hover:bg-black hover:text-white'; // Hover effect on current month days
+    baseClasses += ' cursor-pointer hover:bg-[#242290] hover:text-white'; // Hover effect on current month days
   }
 
   return baseClasses;
@@ -108,13 +103,14 @@ function onMonthChange() {
 
 
 <template>
-  <div class="w-full bg-white p-5 flex-1">
+  <div class="w-full bg-white p-5 flex-1 rounded-lg">
     <!-- Header with month/year and dropdown to select month -->
 
     <!-- Month Selector Dropdown -->
-    <div class="md:flex md:justify-between w-full md:px-5 sm:flex sm:flex-col sm:gap-2 md:flex-row sm:mb-5 md:mb-5 ">
+    <div class="md:flex md:justify-between w-full md:px-5 sm:flex sm:flex-col sm:gap-2 md:flex-row sm:mb-5 md:mb-5">
       <div class="font-[700] header leading-[36px] text-[#303972]">School Calendar</div>
-      <select v-model="selectedMonth" @change="onMonthChange" class="w-fit focus:outline-none font-[400] text-[18px] leading-[27px] text-[#303972]">
+      <div class="relative flex place-items-center">
+        <select v-model="selectedMonth" @change="onMonthChange" class="w-fit focus:outline-none font-[400] text-[18px] leading-[27px] text-[#303972] custom-select">
         <option
           v-for="(month, index) in months"
           :key="index"
@@ -123,6 +119,11 @@ function onMonthChange() {
           {{ month }} {{ today.year() }}
         </option>
       </select>
+      <span class="">
+
+          <img class=" text-[#716f74] md:absolute md:top-[50%] md:right-[-20%] md:translate-y-[-50%] sm:top-[-50%]" src="../../assets/dropdown.svg" alt="">
+        </span>
+      </div>
     </div>
 
     <!-- Days of the week -->
@@ -152,4 +153,35 @@ function onMonthChange() {
     font-size: clamp(18px, 2vw, 24px);
     text-wrap: nowrap;
   }
+
+  /* Custom styles for the select dropdown */
+.custom-select {
+  -webkit-appearance: none; /* For Safari */
+  -moz-appearance: none; /* For Firefox */
+  appearance: none; /* For other browsers */
+  background-color: white;
+  cursor: pointer;
+  border: none;
+}
+
+
+/* Position the custom icon */
+.custom-select-wrapper {
+  position: relative;
+}
+
+/* .custom-select-icon {
+  position: absolute;
+  right: -20%;
+  top: 20%;
+  /* transform: translateY(-50%); */
+  /* pointer-events: none; Prevents interfering with select interaction */
+  /* cursor: pointer; */
+/* } */
+
+/* Add some styles to the options */
+/* .custom-select option {
+  padding: 8px;
+} */
+
 </style>
