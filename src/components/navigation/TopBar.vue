@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import hamburger from '@/assets/hamburger.svg'
 import searchIcon from '@/assets/searchicon.svg'
+import bellIcon from '@/assets/bell.svg'
+import settingIcon from '@/assets/settings.svg'
 import { defineProps, defineEmits, computed } from 'vue'
 import { useRoute } from 'vue-router'
 const route = useRoute()
@@ -76,9 +78,24 @@ const dashboardHeader = computed(() => {
     </div>
 
     <div
-      :class="route.path === '/' ? '2xl:w-[32%] 2xl:h-full sm:w-[100%] md:w-[50%] bg-white sm:mb-5 sm:mr-5 2xl:mr-0'  : '2xl:w-[32%] 2xl:h-full sm:w-[100%] md:w-[50%] bg-[#F3F4FF] sm:mb-5 sm:mr-5 2xl:mr-0'"
+      :class="route.path === '/' ? '2xl:w-[32%] 2xl:h-full sm:w-[100%] md:w-[60%] bg-white sm:mb-5 sm:mr-5 2xl:mr-0 place-items-center sm:pt-[30px] sm:pb-[30px] 2xl:pb-[30px]'  : '2xl:w-[32%] 2xl:h-full sm:w-[100%] md:w-[60%] bg-[#F3F4FF] sm:mb-5 sm:mr-5 2xl:mr-0 place-items-center sm:pt-[30px] sm:pb-[30px] 2xl:pb-[30px]'"
     >
-      dghdhdfh
+      <div class="flex gap-2 place-items-center justify-between w-full px-5">
+        <div class="relative p-3 w-fit rounded-full bg-white">
+          <component class="text-[#A098AE]" :is="bellIcon"/>
+          <span class="w-2 h-2 bg-[#4D44B5] rounded-full absolute top-2 left-9"></span>
+        </div>
+        <div class="p-3 rounded-full bg-white text-[#A098AE]">
+          <component :is="settingIcon"/>
+        </div>
+        <div class="flex gap-3 place-items-center">
+          <div class="flex flex-col text-right">
+          <span class="font-[600] text-[14px] leading-[21px] text-[#303972] text-nowrap">Nabila A.</span>
+          <span class="font-[400] text-[14px] leading-[21px] text-[#2e2b35]">Admin</span>
+        </div>
+        <div class="bg-[#C1BBEB] w-[48px] h-[48px] rounded-full"></div>
+        </div>
+      </div>
     </div>
 
   </div>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import CalenderGraph from '@/components/dashboard/CalenderGraph.vue';
 import DashboardCards from '@/components/dashboard/DashboardCards.vue';
-// import DashboardHeader from '@/components/dashboard/DashboardHeader.vue';
+import DashBoardOverview from '@/components/dashboard/DashBoardOverview.vue';
 import LineChart from '@/components/dashboard/LineChart.vue';
 import PaginationPage from '@/components/dashboard/PaginationPage.vue';
 
@@ -17,7 +17,11 @@ import PaginationPage from '@/components/dashboard/PaginationPage.vue';
     <CalenderGraph/>
     <PaginationPage/>
   </div>
-  <div class=" sm:w-full sm:px-5 2xl:w-[30%] h-screen bg-white">hjdfjddkdf</div>
+  <div class="sm:p-5 2xl:px-0 sm:pt-5 2xl:pt-0 w-full  sm:w-full 2xl:w-[30%]">
+    <div class=" px-5 w-full bg-white" >
+    <DashBoardOverview/>
+  </div>
+  </div>
  </div>
 
 </template>
