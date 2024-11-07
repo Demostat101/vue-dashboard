@@ -49,13 +49,13 @@ const dashboardHeader = computed(() => {
 
 <template>
   <div
-    @click="handleClick"
+
     class="w-full 2xl:flex gap-6  2xl:justify-between flex 2xl:flex-nowrap sm:flex-wrap pl-5 bg-[#F3F4FF] sm:z-10 cursor-pointer"
   >
     <div
       class="flex justify-between place-items-center sm:pt-5 2xl:pt-[30px] sm:pr-5 2xl:pr-0 sm:flex-wrap sm:text-left sm:w-full 2xl:w-[70%] 2xl:py-[30px]"
     >
-      <div class="w-5 h-5 2xl:hidden ">
+      <div  @click="handleClick" class="w-5 h-5 2xl:hidden">
         <component class="text-[#242290]" :is="hamburger" />
       </div>
 
