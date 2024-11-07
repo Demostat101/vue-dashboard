@@ -2,6 +2,7 @@
 import RecentStudents from './RecentStudents.vue';
 import Plus from '../../assets/plus.svg'
 import StudentsMessage from './StudentsMessage.vue';
+import CurrentFood from './CurrentFood.vue';
 
 </script>
 
@@ -24,5 +25,6 @@ import StudentsMessage from './StudentsMessage.vue';
     </div>
     <RecentStudents/>
     <StudentsMessage/>
+    <CurrentFood/>
   </div>
 </template>

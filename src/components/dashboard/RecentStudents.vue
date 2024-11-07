@@ -1,5 +1,5 @@
 <script setup lang="ts" >
-  
+
 import emailIcon from '../../assets/email.svg'
 
 const studentsData = [
@@ -257,7 +257,7 @@ const slicedData = studentsData.slice(0, 5)
 <template>
   <div>
 
-    <div class="flex flex-col gap-5">
+    <div class="flex flex-col gap-[30px]">
       <div v-for="student in slicedData" :key="student.id" class=" flex justify-between" >
         <div class="flex gap-2 place-items-center" >
           <div class="bg-[#C1BBEB] w-[48px] h-[48px] rounded-full"></div>
