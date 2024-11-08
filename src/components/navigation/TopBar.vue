@@ -52,7 +52,7 @@ const dashboardHeader = computed(() => {
 <template>
   <div
 
-    class="w-full 2xl:flex gap-6  2xl:justify-between flex 2xl:flex-nowrap sm:flex-wrap pl-5 bg-[#F3F4FF] sm:z-10 cursor-pointer"
+    class="w-full 2xl:flex gap-6  2xl:justify-between flex 2xl:flex-nowrap sm:flex-wrap pl-5 bg-[#F3F4FF] sm:z-10 cursor-pointer 2xl:static sm:fixed"
   >
     <div
       class="flex justify-between place-items-center sm:pt-5 2xl:pt-[30px] sm:pr-5 2xl:pr-0 sm:flex-wrap sm:text-left sm:w-full 2xl:w-[70%] 2xl:py-[30px]"
@@ -66,7 +66,7 @@ const dashboardHeader = computed(() => {
       </div>
 
       <div
-        class="flex sm:mt-5 md:mt-0 gap-2 md:w-[50%] 2xl:w-[50%] sm:w-full place-items-center bg-white rounded-full px-5"
+        :class="route.path === '/' ? 'flex sm:mt-5 md:mt-0 gap-2 md:w-[50%] 2xl:w-[50%] sm:w-full place-items-center bg-white rounded-full px-5' : 'sm:mt-5 md:mt-0 gap-2 md:w-[50%] 2xl:w-[50%] sm:w-full place-items-center bg-white rounded-full px-5 hidden'"
       >
         <component :is="searchIcon" class="text-[#4D44B5]" />
         <input
@@ -78,7 +78,7 @@ const dashboardHeader = computed(() => {
     </div>
 
     <div
-      :class="route.path === '/' ? '2xl:w-[32%] 2xl:h-full sm:w-[100%] md:w-[60%] justify-between bg-white sm:mb-5 sm:mr-5 2xl:mr-0 place-items-center sm:pt-[30px] sm:pb-[30px] 2xl:pb-[30px]'  : '2xl:w-[32%] 2xl:h-full sm:w-[100%] md:w-[60%] justify-center bg-[#F3F4FF] sm:mb-5 sm:mr-5 2xl:mr-0 place-items-center sm:pt-[30px] sm:pb-[30px] 2xl:pb-[30px]'"
+      :class="route.path === '/' ? '2xl:max-w-[30.6%] 2xl+220:max-w-[30.4%] 2xl:h-full sm:w-[100%] md:w-[60%] justify-between bg-white sm:mb-5 sm:mr-5 2xl:mr-0 place-items-center sm:pt-[50px] sm:pb-[30px] 2xl:pb-[30px]'  : '2xl:max-w-[30.6%] 2xl+220:max-w-[30.4%] 2xl:h-full sm:w-[100%] md:w-[60%] justify-center bg-[#F3F4FF] sm:mb-5 sm:mr-5 2xl:mr-0 place-items-center sm:pt-[50px] sm:pb-[30px] 2xl:pb-[30px] '"
     >
       <div class="flex gap-2 place-items-center justify-between w-full px-5">
         <div class="relative p-3 w-fit rounded-full bg-white">

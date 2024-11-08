@@ -7,7 +7,7 @@ import CurrentFood from './CurrentFood.vue';
 </script>
 
 <template>
-  <div class="flex flex-col gap-[50px] py-5">
+  <div class="flex flex-col gap-[50px] pb-5">
     <div class="flex w-full justify-between place-items-center">
       <div class="flex flex-col">
         <span class="font-[700] text-[24px] leading-[36px] text-[#303972]"
