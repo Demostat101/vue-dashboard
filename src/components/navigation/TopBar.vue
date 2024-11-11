@@ -61,12 +61,12 @@ const dashboardHeader = computed(() => {
         <component class="text-[#242290]" :is="hamburger" />
       </div>
 
-      <div class="font-[700] text-[36px] leading-[54px] text-[#303972]">
+      <div class="font-[700] 2xl:text-[36px] 2xl:leading-[54px] sm:text-[18px] sm:leading-[21px] text-[#303972]">
         {{ dashboardHeader }}
       </div>
 
       <div
-        :class="route.path === '/' ? 'flex sm:mt-5 md:mt-0 gap-2 md:w-[50%] 2xl:w-[50%] sm:w-full place-items-center bg-white rounded-full px-5' : 'sm:mt-5 md:mt-0 gap-2 md:w-[50%] 2xl:w-[50%] sm:w-full place-items-center bg-white rounded-full px-5 hidden'"
+        :class="route.path === '/student-page' || route.path === '/teachers' ? 'sm:mt-5 md:mt-0 gap-2 md:w-[50%] 2xl:w-[50%] sm:w-full place-items-center bg-white rounded-full px-5 hidden' :  'flex sm:mt-5 md:mt-0 gap-2 md:w-[50%] 2xl:w-[50%] sm:w-full place-items-center bg-white rounded-full px-5' "
       >
         <component :is="searchIcon" class="text-[#4D44B5]" />
         <input
@@ -78,7 +78,7 @@ const dashboardHeader = computed(() => {
     </div>
 
     <div
-      :class="route.path === '/' ? '2xl:max-w-[30.6%] 2xl+220:max-w-[30.4%] 2xl:h-full sm:w-[100%] md:w-[60%] justify-between bg-white sm:mb-5 sm:mr-5 2xl:mr-0 place-items-center sm:pt-[50px] sm:pb-[30px] 2xl:pb-[30px]'  : '2xl:max-w-[30.6%] 2xl+220:max-w-[30.4%] 2xl:h-full sm:w-[100%] md:w-[60%] justify-center bg-[#F3F4FF] sm:mb-5 sm:mr-5 2xl:mr-0 place-items-center sm:pt-[50px] sm:pb-[30px] 2xl:pb-[30px] '"
+      :class="route.path === '/' ? '2xl:max-w-[30.6%] 2xl+220:max-w-[30.4%] 2xl:h-full sm:w-[100%] md:w-[60%] justify-between bg-white sm:mb-0 sm:mr-5 2xl:mr-0 place-items-center sm:pt-[10px] sm:pb-[10px] 2xl:pb-[30px] 2xl:pt-[30px]'  : '2xl:max-w-[30.6%] 2xl+220:max-w-[30.4%] 2xl:h-full sm:w-[100%] md:w-[60%] justify-center bg-[#F3F4FF] sm:mb-0 sm:mr-5 2xl:mr-0 place-items-center sm:pt-[10px] sm:pb-[10px] 2xl:pb-[30px] 2xl:pt-[30px]'"
     >
       <div class="flex gap-2 place-items-center justify-between w-full px-5">
         <div class="relative p-3 w-fit rounded-full bg-white">

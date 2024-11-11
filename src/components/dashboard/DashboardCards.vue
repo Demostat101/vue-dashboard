@@ -39,7 +39,7 @@ const cardsData = [
     <AvartarImage class="text-white" :svgIcon="card.image" :name="card.category"/>
     <div>
       <h3 class="font-[400] text-[18px] leading-[27px] text-[#A098AE]">{{ card.category }}</h3>
-    <p class="font-[700] text-[36px] leading-[54px] text-[#333333]">{{ card.total }}</p>
+    <p class="font-[700] 2xl:text-[36px] 2xl:leading-[54px] sm:text-[18px] leading-[21px] text-[#333333]">{{ card.total }}</p>
     </div>
   </div>
 </div>
