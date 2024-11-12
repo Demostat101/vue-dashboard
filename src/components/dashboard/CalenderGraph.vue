@@ -5,9 +5,9 @@ import MultipleBarGraph from './MultipleBarGraph.vue';
 
 <template>
   <div class="sm:block md:flex md:flex-wrap 2xl+220:flex 2xl+220:flex-nowrap  gap-5 w-full">
-  <div class="2xl+220:w-[50%] sm:full flex-1 md:mb-0 sm:mb-5">
+  <div class="2xl+220:w-[48%] sm:full flex-1 md:mb-0 sm:mb-5">
     <CalenderPage/>
   </div>
-  <div class="2xl+220:w-[50%] sm:w-full flex-1"><MultipleBarGraph/> </div>
+  <div class="2xl+220:w-[48%] sm:w-full flex-1"><MultipleBarGraph/> </div>
   </div>
 </template>

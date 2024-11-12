@@ -164,7 +164,7 @@
         <v-pagination
           v-model="currentPageIndex"
           :length="totalPages"
-          :total-visible="5"
+          :total-visible="4"
         />
 
         <component
