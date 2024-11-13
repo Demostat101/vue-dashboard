@@ -9,7 +9,7 @@
           type="text"
           class="text-[#A098AE] font-[400] text-[18px] h-[50px] leading-[27px] 2xl:w-full rounded-full focus:outline-none bg-white sm:w-full"
           placeholder="search here..."
-          v-model="store.searchName"
+          v-model="store.searchStudent"
         />
       </div>
       <div class="flex gap-5 text-nowrap">
@@ -202,7 +202,7 @@ const store = useContextStore()
 
 const filteredData = computed(() => {
   return studentsData.filter(studentData =>
-    studentData.name.toLowerCase().includes(store.searchName),
+    studentData.name.toLowerCase().includes(store.searchStudent),
   )
 })
 

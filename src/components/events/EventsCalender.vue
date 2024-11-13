@@ -7,7 +7,7 @@
         <!-- Month dropdown -->
         <select v-model="selectedMonth" @change="onMonthChange" class="w-fit focus:outline-none font-[400] text-[18px] leading-[27px] text-[#303972] custom-select">
           <option v-for="(month, index) in months" :key="index" :value="index">
-            {{ month }}
+            {{ month }} {{ today.year() }}
           </option>
         </select>
 

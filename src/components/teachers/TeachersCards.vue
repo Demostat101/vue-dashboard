@@ -18,7 +18,7 @@ const filteredData = computed(() => {
   return teachersData.filter(teacher =>
     teacher.name
       .toLowerCase()
-      .includes(store.searchName.toLowerCase()),
+      .includes(store.searchTeacher.toLowerCase()),
   )
 })
 
