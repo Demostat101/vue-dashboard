@@ -201,8 +201,10 @@ const selectedStudents = ref(new Set<number>())
 const store = useContextStore()
 
 const filteredData = computed(() => {
-  return studentsData.filter(studentData =>
-    studentData.name.toLowerCase().includes(store.searchStudent),
+  return studentsData.filter(student =>
+    student.name
+      .toLowerCase()
+      .includes(store.searchStudent.toLowerCase()),
   )
 })
 
