@@ -172,18 +172,5 @@ function onMonthChange() {
   position: relative;
 }
 
-/* .custom-select-icon {
-  position: absolute;
-  right: -20%;
-  top: 20%;
-  /* transform: translateY(-50%); */
-  /* pointer-events: none; Prevents interfering with select interaction */
-  /* cursor: pointer; */
-/* } */
-
-/* Add some styles to the options */
-/* .custom-select option {
-  padding: 8px;
-} */
 
 </style>
