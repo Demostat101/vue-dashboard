@@ -101,13 +101,13 @@ const goToNextPage = () => {
     >
       Showing {{ pageRange }}
     </div>
-    <div class="pagination-controls flex place-items-center gap-5">
+    <div class="pagination-controls flex place-items-center gap-5 ">
       <component
         @click="goToPreviousPage"
         :disabled="currentPageIndex <= 1"
         outlined
         :is="preBtn"
-        class="text-[#A098AE]"
+        class="text-[#A098AE] cursor-pointer"
       />
 
       <!-- Vuetify pagination -->
@@ -120,7 +120,7 @@ const goToNextPage = () => {
       <component
         @click="goToNextPage"
         :disabled="currentPageIndex >= totalPages"
-        class="text-[#A098AE]"
+        class="text-[#A098AE] cursor-pointer"
         :is="nxtBtn"
         outlined
         aria-disabled="true"

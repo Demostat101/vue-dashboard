@@ -21,7 +21,6 @@ type CalendarDay = {
   today: boolean | null;
 };
 
-// const today = ref(dayjs()); // today as dayjs object
 const selectedDate = ref<dayjs.Dayjs>(dayjs()); // Ensure this is a valid dayjs object
 const selectedMonth = ref(dayjs().month()); // Initialize with current month index
 const selectedYear = ref(dayjs().year()); // Initialize with current year
@@ -42,8 +41,7 @@ const months = [
 ];
 const years = Array.from({ length: 50 }, (_, i) => 1980 + i); // Creates a list of years from 1980 to 2030
 
-// Computed for formatted today
-// const todayFormatted = computed(() => today.value.format('YYYY')); // Gets the current year
+
 
 // Generate calendar days
 const calendarDays = computed(() => generateDate(selectedMonth.value, selectedYear.value));
